@@ -1,0 +1,16 @@
+Source: ros-archive-keyring
+Priority: important
+Section: misc
+Maintainer: Neil Roza <neil@rtr.ai>
+Build-Depends: debhelper (>= 10), gnupg
+Standards-Version: 4.1.2
+Vcs-Browser: https://github.com/RealtimeRobotics/ros-archive-keyring
+Vcs-Git: https://github.com/RealtimeRobotics/ros-archive-keyring.git
+
+Package: ros-archive-keyring
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: GnuPG archive keys of the ROS archive
+ The ROS project digitally signs its Release files. This package contains the
+ archive keys used for that.
