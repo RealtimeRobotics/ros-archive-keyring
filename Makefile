@@ -8,8 +8,6 @@ include /usr/share/dpkg/default.mk
 # https://manpages.debian.org/dh_listpackages
 PKGNAME := $(word 1, $(shell dh_listpackages))
 
-GPG_OPTIONS := --verbose --no-options --no-default-keyring --no-auto-check-trustdb --trustdb-name ./trustdb.gpg
-
 URI := http://packages.ros.org/ros/ubuntu/
 
 SUITE := $(shell sh -c '. /etc/os-release && echo $$VERSION_CODENAME')
@@ -18,12 +16,20 @@ SUITE := $(shell sh -c '. /etc/os-release && echo $$VERSION_CODENAME')
 all: $(PKGNAME).gpg
 
 $(PKGNAME).gpg: ros.asc
-	GNUPGHOME="$$(mktemp -dt GNUPGHOME.XXXXXX)" \
-		gpg $(GPG_OPTIONS) --import --keyring ./$@ ros.asc
+	mkdir -vp ./gnupghome
+	gpg \
+		--import \
+		--verbose \
+		--no-options \
+		--no-default-keyring \
+		--no-auto-check-trustdb \
+		--homedir ./gnupghome \
+		--keyring ./$@ \
+		$^
 
 .PHONY: clean
 clean:
-	rm -vf trustdb.gpg $(PKGNAME).gpg $(PKGNAME).gpg~
+	rm -vf gnupghome $(PKGNAME).gpg $(PKGNAME).gpg~
 
 # https://wiki.debian.org/DebianRepository/UseThirdParty
 .PHONY: install

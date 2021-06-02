@@ -4,5 +4,5 @@ debian/debhelper-build-stamp
 debian/files
 debian/ros-archive-keyring.substvars
 debian/ros-archive-keyring/
+gnupghome/
 ros-archive-keyring.gpg
-trustdb.gpg
