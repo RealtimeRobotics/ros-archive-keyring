@@ -10,7 +10,8 @@ SUITE := $(shell sh -c '. /etc/os-release && echo $$VERSION_CODENAME')
 all: ros-archive-keyring.gpg
 
 ros-archive-keyring.gpg: ros.asc
-	gpg $(GPG_OPTIONS) --import --keyring ./$@ ros.asc
+	GNUPGHOME="$$(mktemp -dt GNUPGHOME.XXXXXX)" \
+		gpg $(GPG_OPTIONS) --import --keyring ./$@ ros.asc
 
 .PHONY: clean
 clean:
