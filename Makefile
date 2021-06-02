@@ -29,7 +29,7 @@ $(PKGNAME).gpg: ros.asc
 
 .PHONY: clean
 clean:
-	rm -vf gnupghome $(PKGNAME).gpg $(PKGNAME).gpg~
+	rm -vrf gnupghome $(PKGNAME).gpg $(PKGNAME).gpg~
 
 # https://wiki.debian.org/DebianRepository/UseThirdParty
 .PHONY: install
