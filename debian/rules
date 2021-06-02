@@ -7,3 +7,7 @@ export DH_VERBOSE = 1
 
 override_dh_install:
 	@echo NOOP $@
+
+override_dh_installdeb:
+	dh_installdeb
+	rm -vf debian/*/DEBIAN/conffiles

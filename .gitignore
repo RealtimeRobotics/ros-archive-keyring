@@ -2,6 +2,7 @@
 debian/.debhelper/
 debian/debhelper-build-stamp
 debian/files
+debian/ros-archive-keyring.debhelper.log
 debian/ros-archive-keyring.substvars
 debian/ros-archive-keyring/
 gnupghome/
