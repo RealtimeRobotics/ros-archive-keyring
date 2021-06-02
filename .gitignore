@@ -1,1 +1,8 @@
 *~
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/ros-archive-keyring.substvars
+debian/ros-archive-keyring/
+ros-archive-keyring.gpg
+trustdb.gpg
